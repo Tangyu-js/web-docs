@@ -80,9 +80,11 @@ module.exports = {
           title: 'Service',
           collapsable: false,
           children: [
-            ['/document/service/linux', 'linux']
+            ['/document/service/linux', 'linux'],
+            ['/document/service/nginx', 'nginx'],
+            ['/document/service/jenkins', 'jenkins'],
           ]
-        }
+        },
       ]
     }
   }
