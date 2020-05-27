@@ -72,14 +72,15 @@ module.exports = {
           title: 'HTML',
           collapsable: false,
           children: [
-            ['/document/vue/render', '创建一个vue基础项目']
+            ['/document/html/html5', 'HTML5']
+
           ]
         },
         {
           title: 'Vue',
           collapsable: false,
           children: [
-            ['/document/html/html5', 'HTML5']
+            ['/document/vue/render', '创建一个vue基础项目']
 
           ]
         },
