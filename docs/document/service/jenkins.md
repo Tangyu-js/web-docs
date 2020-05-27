@@ -18,7 +18,7 @@
 
 4. 解压：  tar zxvf 压缩包名称 （例如：tar zxvf jdk-8u152-linux-x64.tar.gz）
 
-5. 配置 /etc/profile
+5. 配置 /etc/profile （环境变量）
 
 ```bash
 vi /etc/profile  #打开配置文件
@@ -125,5 +125,40 @@ candidates="
 
 4. 解决问题后重新启动服务 systemctl start jenkins
 
-> 按照提示完成后续操作
+> 在浏览器中打开网址，按照提示完成后续操作,注册账号
 
+> 接下来是最简单的实现方法，通过deploy key的方式来配置构建暂时没看
+
+5. 给jenkins安装必要插件
+
+在jenkins设置中找到插件管理， 搜索nodeJs插件，安装
+
+6. 找到全局工具配置
+
+配置使用nodejs， 选择自动安装就行
+
+7. 开始创建jenkins任务
+
+ - 任务名字： 任务的名字决定jenkins会在构建的时候会在workspace下创建的文件名，关系到最终执行shell脚本
+ - 源码管理： 填写需要构建的项目地址， 添加Credentials key授权获取代码， 并选择获取的分支
+ - 构建环境选择：  Provide Node & npm bin/ folder to PATH  
+ - 添加构建后操作： 选择执行shell, 最基本的代码如下
+
+ ``` bash
+cd /var/lib/jenkins/workspace/web-docs/ #进入Jenkins工作空间下 项目目录 
+node -v #检测node版本（此条命令非必要）
+npm -v #检测npm版本（此条命令非必要）
+npm config set registry https://registry.npm.taobao.org #把npm源设置为淘宝源（这个你懂的）
+npm config get registry #检测npm是否切换成功（此条命令非必要）
+npm install #安装项目中的依赖
+npm run docs:build #执行前端代码打包命令
+cd docs/.vuepress/dist/
+rm -rf result.tar.gz #删除上次打包生成的压缩文件（一般建议备份，不要直接删除，这边测试就无所谓啦）
+tar -zcvf result.tar.gz * #把生成的项目打包成压缩包，方便移动到项目部署目录
+cd /usr/share/nginx/html #进入web项目根目录
+mv /var/lib/jenkins/workspace/web-docs/docs/.vuepress/dist/result.tar.gz ./  #移动刚刚打包好的项目到web项目根目录
+tar -zxvf result.tar.gz #解压项目到dist目录
+rm -rf result.tar.gz    #删除压缩包
+ ```
+
+8. 保存、开始构建
