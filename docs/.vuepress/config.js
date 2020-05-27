@@ -9,7 +9,7 @@
 const getChildContent = require('../../scripts//build.js')
 
 module.exports = {
-  title: '前端小生的学习经验',
+  title: '他（她）和前端的故事',
   description: 'Just playing around',
   themeConfig: {
     nav: [{
