@@ -9,7 +9,7 @@
 const getChildContent = require('../../scripts//build.js')
 
 module.exports = {
-  title: '前端小生的学习经验',
+  title: '皮皮猫才知道的事情~~',
   description: 'Just playing around',
   themeConfig: {
     nav: [{
@@ -68,13 +68,16 @@ module.exports = {
           title: 'HTML',
           collapsable: false,
           children: [
-            ['/document/html/html5', 'HTML5']
+            ['/document/vue/render', '创建一个vue基础项目']
           ]
         },
         {
           title: 'Vue',
           collapsable: false,
-          children: []
+          children: [
+            ['/document/html/html5', 'HTML5']
+
+          ]
         },
         {
           title: 'Service',
