@@ -9,7 +9,11 @@
 const getChildContent = require('../../scripts//build.js')
 
 module.exports = {
+<<<<<<< HEAD
   title: '皮皮猫才知道的事情~~',
+=======
+  title: '他（她）和前端的故事',
+>>>>>>> c16a01546e72a3733def25b97c1e66a3f5b259cd
   description: 'Just playing around',
   themeConfig: {
     nav: [{
