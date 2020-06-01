@@ -5,7 +5,7 @@
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue-press-start\docs\.vuepress\config.js
- */ 
+ */
 const getChildContent = require('../../scripts//build.js')
 
 module.exports = {
@@ -76,7 +76,9 @@ module.exports = {
           title: 'Vue',
           collapsable: false,
           children: [
-            ['/document/vue/render', '创建一个vue基础项目']
+            ['/document/vue/render', '创建一个vue基础项目'],
+            ['/document/vue/corresponded', '组件传值'],
+
 
           ]
         },
